@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}client{% endblock %}
+
+{% block content %}
+
+
+  <div class="border rounded mx-5 my-2 bg-light">
+    
+    <h2>Client: {{client['first_name']}} {{client['last_name']}}</h2>
+    
+    <div class="list-group">
+      <h3>Commandes:</h3>
+  
+    {% if commandes %}    
+      {% for commande in commandes %}
+        <a class="list-group-item list-group-item-action" href="{{ url_for('page_commande', id_commande=commande['invoice_id']) }}">{{commande['invoice_date']}} {{commande['total']}}€</a>
+      {% endfor %}
+    {% else %}
+      <li class="list-group-item">Aucune commande trouvée</li>
+    {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

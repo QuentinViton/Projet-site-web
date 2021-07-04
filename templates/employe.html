@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Employé{% endblock %}
+
+{% block content %}
+
+
+<div class="border rounded mx-5 my-2 bg-light">
+    
+  <h2>Employé: {{ employe['first_name'] }} {{ employe['last_name'] }}</h2>
+  
+
+  
+      <h3>Manager: {% if employe['manager_first_name'] is not none %}<a href="{{ url_for('page_employe', id_employe=employe['reports_to']) }}">{{employe['manager_first_name']}} {{employe['manager_last_name']}}</a>{%else%}Aucun{%endif%}</h3>
+  <div class="list-group">
+  {% if clients %}    
+    <h3>Clients:</h3>
+    {% for client in clients %}
+      <a class="list-group-item list-group-item-action" href="{{ url_for('page_client', id_client=client['customer_id']) }}">{{client['first_name']}} {{client['last_name']}}</a>
+    {% endfor %}
+  {% else %}
+    <p class="list-group-item">Aucun client trouvé</p>
+  {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}

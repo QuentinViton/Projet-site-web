@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}clients{% endblock %}
+
+{% block content %}
+
+  <div class="border rounded mx-5 my-2 bg-light">
+    
+    <h2>Clients</h2>
+    
+    <div class="list-group">
+    {% if clients %}    
+      {% for client in clients %}
+        <a class="list-group-item list-group-item-action" href="{{ url_for('page_client', id_client=client['customer_id']) }}">{{client['first_name']}} {{client['last_name']}}</a>
+      {% endfor %}
+    {% else %}
+      <li class="list-group-item">Aucun client trouvé</li>
+    {% endif %}
+    </div>
+  </div>
+
+
+
+{% endblock %}

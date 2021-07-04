@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}artiste{% endblock %}
+
+{% block content %}
+
+
+<div class="border rounded mx-5 my-2 bg-light">
+    
+  <h2>Artiste: {{ artiste['name'] }}</h2>
+  
+  <div class="list-group">
+  {% if albums %}    
+    {% for album in albums %}
+      <a class="list-group-item list-group-item-action" href="{{ url_for('page_album', id_album=album['album_id']) }}">{{album['title']}}</a>
+    {% endfor %}
+  {% else %}
+    <p class="list-group-item">Aucun album trouvé</p>
+  {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}

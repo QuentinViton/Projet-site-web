@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}genre{% endblock %}
+
+{% block content %}
+
+<div class="border rounded mx-5 my-2 bg-light">
+    
+  <h2>Genre: {{ genre['name'] }}</h2>
+  
+  <ul class="list-group">
+  {% if tracks %}    
+    {% for track in tracks %}
+      <li class="list-group-item">{{track['name']}}</li>
+    {% endfor %}
+  {% else %}
+    <li class="list-group-item">Aucune chanson trouvée</li>
+  {% endif %}
+  </ul>
+</div>
+
+{% endblock %}

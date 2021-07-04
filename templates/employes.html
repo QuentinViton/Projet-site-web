@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Employés{% endblock %}
+
+{% block content %}
+
+
+<div class="border rounded mx-5 my-2 bg-light">
+    
+  <h2>Employés:</h2>
+  
+  <div class="list-group">
+  {% if employes %}    
+    {% for employe in employes %}
+      <a class="list-group-item list-group-item-action" href="{{ url_for('page_employe', id_employe=employe['employee_id']) }}">{{employe['first_name']}} {{employe['last_name']}}</a>
+    {% endfor %}
+  {% else %}
+    <p class="list-group-item">Aucun employé trouvé</p>
+  {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{# parametres : artistes, albums, genres #}
+
+{% block content %}
+
+  <div class="row my-2">
+    <div class="col-md-3 border rounded mx-5 bg-light">
+      <h2>Artistes</h2>
+      <div class="list-group">
+        {% for artiste in artistes %}
+        <a class="list-group-item list-group-item-action" href="{{ url_for('page_artiste', id_artiste=artiste['artist_id']) }}">{{artiste['name']}}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-md-3 border rounded mx-5 bg-light">
+      <h2>Albums</h2>
+      <div class="list-group">
+        {% for album in albums %}
+          <a class="list-group-item list-group-item-action" href="{{ url_for('page_album', id_album=album['album_id']) }}">{{album['title']}}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-md-3 border rounded mx-5 bg-light">
+      <h2>Genres</h2>
+      <div class="list-group">
+        {% for genre in genres %}
+        <a class="list-group-item list-group-item-action" href="{{ url_for('page_genre', id_genre=genre['genre_id']) }}">{{genre['name']}}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+
+{% endblock %}
+
